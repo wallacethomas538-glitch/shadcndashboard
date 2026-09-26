@@ -12,6 +12,7 @@ const BlankLayout = Loadable(lazy(() => import('../layouts/blank/BlankLayout')))
 // dashboards
 
 const ModernDashboard = Loadable(lazy(() => import('../views/dashboards/modern')));
+const AgentsPage = Loadable(lazy(() => import("../views/vektorflow/agents")));
 
 const Error = Loadable(lazy(() => import('../views/auth/error')));
 
@@ -55,6 +56,7 @@ const Router = [
       { path: '/', element: <ModernDashboard /> },
 
       { path: '/dashboards/modern', element: <ModernDashboard /> },
+      { path: '/vektorflow/agents', element: <AgentsPage /> },
 
       { path: '/apps/blog/post', element: <Blog /> },
       { path: '/apps/blog/detail/:id', element: <BlogDetail /> },

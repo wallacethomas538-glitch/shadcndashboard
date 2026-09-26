@@ -86,7 +86,13 @@ const SidebarContent: MenuItem[] = [
         name: "Modern",
         icon: House,
         url: "/",
-      }
+      },
+      {
+        id: uniqueId(),
+        name: "Agents",
+        icon: Sparkles,
+        url: "/vektorflow/agents",
+      },
     ],
   },
   {
