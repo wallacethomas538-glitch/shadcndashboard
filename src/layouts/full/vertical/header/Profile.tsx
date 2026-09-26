@@ -27,7 +27,7 @@ export default function ProfileSheet() {
       <SheetTrigger className="cursor-pointer hover:bg-primary/5 flex items-center justify-center rounded-full h-10 w-10">
         <Avatar className="h-8 w-8">
           <AvatarImage src={avatar} alt="profile" />
-          <AvatarFallback>CM</AvatarFallback>
+          <AvatarFallback>WT</AvatarFallback>
         </Avatar>
       </SheetTrigger>
 
@@ -50,11 +50,11 @@ export default function ProfileSheet() {
                 width={30}
                 height={30}
               />
-              <AvatarFallback>CM</AvatarFallback>
+              <AvatarFallback>WT</AvatarFallback>
             </Avatar>
 
             <div className="text-center">
-              <h6 className="text-lg font-semibold">Cameron</h6>
+              <h6 className="text-lg font-semibold">Wallace</h6>
               <div className="flex items-center gap-2 justify-center">
                 <Mailbox
                   size={18} className="text-muted-foreground"

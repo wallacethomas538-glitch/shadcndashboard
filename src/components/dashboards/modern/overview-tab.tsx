@@ -44,7 +44,7 @@ export default function OverviewTab() {
       <div className="flex items-center flex-wrap lg:flex-nowrap lg:gap-0 gap-4 justify-between">
         <div className='flex flex-col items-start'>
           <h2 className="text-xl flex item-center gap-2">
-            {greeting}, Cameron <span className="flex items-center">{getGreetingIcon()}</span>
+            {greeting}, VektorFlow <span className="flex items-center">{getGreetingIcon()}</span>
           </h2>
           <p className='text-sm font-normal text-muted-foreground'>Stay informed with today’s analytics</p>
         </div>
