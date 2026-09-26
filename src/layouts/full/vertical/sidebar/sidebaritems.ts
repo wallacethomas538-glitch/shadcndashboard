@@ -93,6 +93,18 @@ const SidebarContent: MenuItem[] = [
         icon: Sparkles,
         url: "/vektorflow/agents",
       },
+      {
+        id: uniqueId(),
+        name: "LLM / Models",
+        icon: Sparkles,
+        url: "/vektorflow/models",
+      },
+      {
+        id: uniqueId(),
+        name: "Hermes",
+        icon: Sparkles,
+        url: "/vektorflow/hermes",
+      },
     ],
   },
   {

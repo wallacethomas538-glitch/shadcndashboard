@@ -13,6 +13,8 @@ const BlankLayout = Loadable(lazy(() => import('../layouts/blank/BlankLayout')))
 
 const ModernDashboard = Loadable(lazy(() => import('../views/dashboards/modern')));
 const AgentsPage = Loadable(lazy(() => import("../views/vektorflow/agents")));
+const ModelsPage = Loadable(lazy(() => import("../views/vektorflow/models")));
+const HermesPage = Loadable(lazy(() => import("../views/vektorflow/hermes")));
 
 const Error = Loadable(lazy(() => import('../views/auth/error')));
 
@@ -43,6 +45,7 @@ const Login2 = Loadable(lazy(() => import('../views/auth/auth2/login')));
 const Register2 = Loadable(lazy(() => import('../views/auth/auth2/register')));
 
 const ForgotPassword2 = Loadable(lazy(() => import('../views/auth/auth2/forgot-password')));
+const ResetPassword2 = Loadable(lazy(() => import('../views/auth/auth2/reset-password')));
 
 const TwoSteps2 = Loadable(lazy(() => import('../views/auth/auth2/two-steps')));
 
@@ -57,6 +60,8 @@ const Router = [
 
       { path: '/dashboards/modern', element: <ModernDashboard /> },
       { path: '/vektorflow/agents', element: <AgentsPage /> },
+      { path: '/vektorflow/models', element: <ModelsPage /> },
+      { path: '/vektorflow/hermes', element: <HermesPage /> },
 
       { path: '/apps/blog/post', element: <Blog /> },
       { path: '/apps/blog/detail/:id', element: <BlogDetail /> },
@@ -88,6 +93,7 @@ const Router = [
       { path: '/auth/auth2/register', element: <Register2 /> },
 
       { path: '/auth/auth2/forgot-password', element: <ForgotPassword2 /> },
+      { path: '/auth/auth2/reset-password', element: <ResetPassword2 /> },
 
       { path: '/auth/auth2/two-steps', element: <TwoSteps2 /> },
       { path: '/auth/maintenance', element: <Maintainance /> },

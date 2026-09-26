@@ -8,12 +8,16 @@ import TotalAssets from "@/components/dashboards/modern/totals-assets";
 import ProjectsOrders from "src/components/dashboards/modern/projects-orders";
 import StyleAwareWrapper from "src/components/shared/StyleAwareWrapper";
 import StyleDivider from "src/components/shared/StyleDivider";
+import SupabaseStatus from "@/components/vektorflow/SupabaseStatus";
 
 const page = () => {
   return (
     <>
       <div className="pb-4">
         <OverviewTab />
+        <div className="mt-4">
+          <SupabaseStatus />
+        </div>
       </div>
       <StyleAwareWrapper
         lyraClassName="grid grid-cols-12 p-px gap-px bg-border"
