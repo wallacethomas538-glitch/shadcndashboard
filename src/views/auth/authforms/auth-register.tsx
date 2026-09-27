@@ -33,7 +33,7 @@ const AuthRegister = () => {
     <div className="flex-1 flex flex-col items-center justify-center p-8 md:p-12">
       <div className="w-full max-w-md flex flex-col gap-6 items-center">
         {/* Logo Header */}
-        <a href="#">
+        <a href="/" aria-label="Home">
           <img
             src={logodark}
             alt="Logo"
