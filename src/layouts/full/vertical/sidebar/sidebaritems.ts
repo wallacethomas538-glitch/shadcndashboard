@@ -77,10 +77,9 @@ import {
   HeartPulse
 } from "lucide-react"
 
-import contentMap from 'src/content/vektorflow-content-map.json';
+import { getExistingContentNodes } from 'src/content/vektorflow-content';
 
-const vektorFlowNavItems: MenuItem[] = contentMap.nodes
-  .filter((node) => node.status === 'existing' && node.indexable && node.path)
+const vektorFlowNavItems: MenuItem[] = getExistingContentNodes()
   .filter((node) => node.path !== '/vektorflow')
   .map((node) => ({
     id: node.id,
