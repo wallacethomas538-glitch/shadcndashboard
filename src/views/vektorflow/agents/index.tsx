@@ -1,10 +1,9 @@
 import { useEffect, useState } from 'react';
 import BreadcrumbComp from 'src/layouts/full/shared/breadcrumb/BreadcrumbComp';
+import { getContentNode } from 'src/content/vektorflow-content';
 
-const BCrumb = [
-  { to: '/', title: 'Home' },
-  { title: 'Agents' },
-];
+const contentNode = getContentNode('vf-agents');
+const pageTitle = contentNode?.title ?? 'vf-agents';
 
 type Agent = Record<string, unknown>;
 
@@ -24,10 +23,10 @@ function AgentsPage() {
 
   return (
     <div className="flex flex-col gap-4">
-      <BreadcrumbComp title="Agents" items={BCrumb} />
+      <BreadcrumbComp title={pageTitle} />
 
       <div className="rounded-xl border bg-card p-6">
-        <h2 className="text-2xl font-semibold">VektorFlow Agents</h2>
+        <h2 className="text-2xl font-semibold">{pageTitle}</h2>
         <p className="mt-2 text-muted-foreground">
           Manage and monitor your AI agents from one command center.
         </p>
