@@ -56,7 +56,7 @@ import {
   Tag,
   Ticket,
   Unlink,
-  UserPlus, Smile, House, NotebookText, Component,
+  UserPlus, Smile, NotebookText, Component,
   Table2,
   Form,
   CircleUserRound,
