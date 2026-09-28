@@ -77,34 +77,23 @@ import {
   HeartPulse
 } from "lucide-react"
 
+import contentMap from 'src/content/vektorflow-content-map.json';
+
+const vektorFlowNavItems: MenuItem[] = contentMap.nodes
+  .filter((node) => node.status === 'existing' && node.indexable && node.path)
+  .filter((node) => node.path !== '/vektorflow')
+  .map((node) => ({
+    id: node.id,
+    name: node.title,
+    icon: Sparkles,
+    url: node.path,
+  }));
+
 const SidebarContent: MenuItem[] = [
   {
     heading: "Dashboard",
     items: [
-      {
-        id: uniqueId(),
-        name: "Modern",
-        icon: House,
-        url: "/",
-      },
-      {
-        id: uniqueId(),
-        name: "Agents",
-        icon: Sparkles,
-        url: "/vektorflow/agents",
-      },
-      {
-        id: uniqueId(),
-        name: "LLM / Models",
-        icon: Sparkles,
-        url: "/vektorflow/models",
-      },
-      {
-        id: uniqueId(),
-        name: "Hermes",
-        icon: Sparkles,
-        url: "/vektorflow/hermes",
-      },
+      ...vektorFlowNavItems,
     ],
   },
   {
