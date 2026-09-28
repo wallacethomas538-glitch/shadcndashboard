@@ -20,7 +20,7 @@ export interface MenuItem {
   heading?: string;
   name?: string;
   icon?: LucideIcon;
-  id?: number;
+  id?: number | string;
   to?: string;
   item?: MenuItem[];
   items?: ChildItem[];
@@ -79,7 +79,7 @@ import {
 
 import { getExistingContentNodes } from 'src/content/vektorflow-content';
 
-const vektorFlowNavItems: MenuItem[] = getExistingContentNodes()
+const vektorFlowNavItems: ChildItem[] = getExistingContentNodes()
   .filter((node) => node.path !== '/vektorflow')
   .map((node) => ({
     id: node.id,
