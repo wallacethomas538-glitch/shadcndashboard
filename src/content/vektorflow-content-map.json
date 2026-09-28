@@ -1,0 +1,1572 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "registryVersion": "1.0.0",
+  "registryId": "vektorflow-content-map",
+  "updated": "2026-09-28",
+  "purpose": "Canonical content and internal-link relationship registry for VektorFlow 15XR. Dashboard navigation, SEO generation, breadcrumbs, content generation, and future sitemap/link validation should consume this registry instead of maintaining independent relationship lists.",
+  "authority": {
+    "repository": "wallacethomas538-glitch/shadcndashboard",
+    "branch": "main",
+    "scope": "content architecture",
+    "implementationStatus": "architecture registry; does not assert that every target page or agent is currently implemented"
+  },
+  "rules": {
+    "canonicalId": "Every content node has a stable ID. IDs must not change when copy changes.",
+    "canonicalPath": "Each indexable node should have one canonical route.",
+    "incomingLinks": "Every indexable node should be reachable from at least one pillar or hub.",
+    "outgoingLinks": "Links should be selected from explicit relationships plus contextual relationships generated from concepts.",
+    "anchors": "Prefer descriptive anchors derived from target title or anchorAliases; never use generic 'click here'.",
+    "platformNeutrality": "Shopify is an integration/use case, not the platform root.",
+    "implementationTruth": "Target agents and future pages are content architecture nodes; do not imply runtime implementation until verified.",
+    "templateContent": "Generic starter-template blog content is excluded from the VektorFlow SEO graph until replaced or intentionally migrated.",
+    "linkDirection": "Edges are directional. Reciprocal links should be declared explicitly when useful."
+  },
+  "taxonomy": {
+    "pillars": [
+      {
+        "id": "platform",
+        "name": "Platform",
+        "route": "/vektorflow"
+      },
+      {
+        "id": "agents",
+        "name": "AI Agents",
+        "route": "/vektorflow/agents"
+      },
+      {
+        "id": "intelligence",
+        "name": "Intelligence & Models",
+        "route": "/vektorflow/models"
+      },
+      {
+        "id": "operations",
+        "name": "Agent Operations",
+        "route": "/vektorflow/hermes"
+      },
+      {
+        "id": "use-cases",
+        "name": "Use Cases",
+        "route": "/use-cases"
+      },
+      {
+        "id": "integrations",
+        "name": "Integrations",
+        "route": "/integrations"
+      },
+      {
+        "id": "developers",
+        "name": "Developers",
+        "route": "/developers"
+      },
+      {
+        "id": "knowledge",
+        "name": "Knowledge",
+        "route": "/knowledge"
+      }
+    ],
+    "concepts": [
+      "vektorflow",
+      "ai agents",
+      "agent orchestration",
+      "autonomous workflows",
+      "multi-agent systems",
+      "workflow automation",
+      "memory",
+      "model routing",
+      "llm providers",
+      "local ai",
+      "mcp",
+      "security",
+      "observability",
+      "api",
+      "integrations",
+      "e-commerce",
+      "product research",
+      "marketing",
+      "content generation",
+      "competitive intelligence",
+      "forecasting",
+      "optimization",
+      "bundling",
+      "communication",
+      "governance"
+    ]
+  },
+  "nodes": [
+    {
+      "id": "vf-home",
+      "type": "app",
+      "status": "existing",
+      "indexable": true,
+      "title": "VektorFlow Command Center",
+      "path": "/",
+      "pillar": "platform",
+      "concepts": [
+        "vektorflow",
+        "ai agents",
+        "agent orchestration",
+        "command center",
+        "automation"
+      ],
+      "relatedAgents": [
+        "architect",
+        "rook",
+        "hermes"
+      ],
+      "linksInFrom": [
+        "vf-platform",
+        "vf-agents",
+        "vf-models",
+        "vf-hermes",
+        "vf-use-cases",
+        "vf-developers",
+        "vf-knowledge"
+      ],
+      "linksOutTo": [
+        "vf-platform",
+        "vf-agents",
+        "vf-models",
+        "vf-hermes",
+        "vf-use-cases",
+        "vf-integrations",
+        "vf-developers",
+        "vf-knowledge"
+      ]
+    },
+    {
+      "id": "vf-platform",
+      "type": "hub",
+      "status": "planned",
+      "indexable": true,
+      "title": "VektorFlow",
+      "path": "/vektorflow",
+      "pillar": "platform",
+      "concepts": [
+        "vektorflow",
+        "ai operating system",
+        "agent orchestration",
+        "autonomous automation",
+        "workflows",
+        "integrations",
+        "memory",
+        "security",
+        "observability"
+      ],
+      "linksInFrom": [
+        "vf-home",
+        "vf-architecture",
+        "vf-agents",
+        "vf-models",
+        "vf-hermes",
+        "vf-use-cases",
+        "vf-integrations",
+        "vf-developers",
+        "vf-knowledge"
+      ],
+      "linksOutTo": [
+        "vf-architecture",
+        "vf-agents",
+        "vf-models",
+        "vf-hermes",
+        "vf-use-cases",
+        "vf-integrations",
+        "vf-developers",
+        "vf-knowledge"
+      ]
+    },
+    {
+      "id": "vf-architecture",
+      "type": "hub",
+      "status": "planned",
+      "indexable": true,
+      "title": "VektorFlow Architecture",
+      "path": "/vektorflow/architecture",
+      "pillar": "platform",
+      "concepts": [
+        "architecture",
+        "orchestration",
+        "agents",
+        "event bus",
+        "api",
+        "memory",
+        "database",
+        "model routing",
+        "integrations",
+        "security",
+        "workflows"
+      ],
+      "linksOutTo": [
+        "vf-platform",
+        "vf-agents",
+        "vf-hermes",
+        "vf-models",
+        "vf-knowledge-orchestration",
+        "vf-integrations",
+        "vf-developers",
+        "vf-security"
+      ]
+    },
+    {
+      "id": "vf-agents",
+      "type": "hub",
+      "status": "existing",
+      "indexable": true,
+      "title": "VektorFlow Agents",
+      "path": "/vektorflow/agents",
+      "pillar": "agents",
+      "concepts": [
+        "ai agents",
+        "autonomous agents",
+        "agent roles",
+        "agent communication",
+        "memory",
+        "tools",
+        "routing",
+        "multi-agent systems"
+      ],
+      "relatedAgents": [
+        "all-target-agents"
+      ],
+      "linksOutTo": [
+        "vf-architecture",
+        "vf-hermes",
+        "vf-models",
+        "vf-knowledge-orchestration",
+        "vf-agent-hawk",
+        "vf-agent-smaug",
+        "vf-agent-architect",
+        "vf-agent-davinci",
+        "vf-agent-rook",
+        "vf-agent-aegis",
+        "vf-agent-arbiter",
+        "vf-agent-sentinel",
+        "vf-agent-echo",
+        "vf-agent-cerebrum",
+        "vf-agent-viraldet",
+        "vf-agent-shadow",
+        "vf-agent-bundler",
+        "vf-agent-pivot",
+        "vf-agent-oracle"
+      ]
+    },
+    {
+      "id": "vf-models",
+      "type": "hub",
+      "status": "existing",
+      "indexable": true,
+      "title": "VektorFlow Models",
+      "path": "/vektorflow/models",
+      "pillar": "intelligence",
+      "concepts": [
+        "llms",
+        "model routing",
+        "providers",
+        "fallback models",
+        "local inference",
+        "context windows",
+        "cost optimization",
+        "agent-model assignment"
+      ],
+      "linksOutTo": [
+        "vf-agents",
+        "vf-hermes",
+        "vf-architecture",
+        "vf-knowledge-routing",
+        "vf-knowledge-local-ai"
+      ]
+    },
+    {
+      "id": "vf-hermes",
+      "type": "hub",
+      "status": "existing",
+      "indexable": true,
+      "title": "Hermes",
+      "path": "/vektorflow/hermes",
+      "pillar": "operations",
+      "concepts": [
+        "hermes",
+        "agent operations",
+        "orchestration",
+        "automation",
+        "tools",
+        "mcp",
+        "model routing",
+        "local ai",
+        "agent communication",
+        "security",
+        "memory"
+      ],
+      "relatedAgents": [
+        "architect",
+        "cerebrum",
+        "aegis",
+        "sentinel",
+        "echo"
+      ],
+      "linksOutTo": [
+        "vf-architecture",
+        "vf-agents",
+        "vf-models",
+        "vf-knowledge-orchestration",
+        "vf-knowledge-mcp",
+        "vf-knowledge-local-ai",
+        "vf-security",
+        "vf-developers"
+      ]
+    },
+    {
+      "id": "vf-use-cases",
+      "type": "hub",
+      "status": "planned",
+      "indexable": true,
+      "title": "VektorFlow Use Cases",
+      "path": "/use-cases",
+      "pillar": "use-cases",
+      "concepts": [
+        "automation",
+        "e-commerce",
+        "marketing",
+        "product research",
+        "content",
+        "customer operations",
+        "multi-agent workflows"
+      ],
+      "linksOutTo": [
+        "vf-usecase-ecommerce",
+        "vf-usecase-automation",
+        "vf-usecase-marketing",
+        "vf-usecase-product-research",
+        "vf-usecase-content",
+        "vf-usecase-customer-ops",
+        "vf-usecase-multi-agent"
+      ]
+    },
+    {
+      "id": "vf-integrations",
+      "type": "hub",
+      "status": "planned",
+      "indexable": true,
+      "title": "VektorFlow Integrations",
+      "path": "/integrations",
+      "pillar": "integrations",
+      "concepts": [
+        "integrations",
+        "api",
+        "shopify",
+        "hermes",
+        "supabase",
+        "mcp"
+      ],
+      "linksOutTo": [
+        "vf-int-shopify",
+        "vf-int-hermes",
+        "vf-int-supabase",
+        "vf-int-mcp",
+        "vf-int-api"
+      ]
+    },
+    {
+      "id": "vf-developers",
+      "type": "hub",
+      "status": "planned",
+      "indexable": true,
+      "title": "VektorFlow Developers",
+      "path": "/developers",
+      "pillar": "developers",
+      "concepts": [
+        "api",
+        "agents",
+        "workflows",
+        "mcp",
+        "authentication",
+        "deployment"
+      ],
+      "linksOutTo": [
+        "vf-dev-api",
+        "vf-dev-agents",
+        "vf-dev-workflows",
+        "vf-dev-mcp",
+        "vf-dev-auth",
+        "vf-dev-deployment"
+      ]
+    },
+    {
+      "id": "vf-knowledge",
+      "type": "hub",
+      "status": "planned",
+      "indexable": true,
+      "title": "VektorFlow Knowledge",
+      "path": "/knowledge",
+      "pillar": "knowledge",
+      "concepts": [
+        "ai agents",
+        "orchestration",
+        "automation",
+        "security",
+        "memory",
+        "llm routing",
+        "mcp",
+        "e-commerce automation",
+        "seo"
+      ],
+      "linksOutTo": [
+        "vf-knowledge-orchestration",
+        "vf-knowledge-agents",
+        "vf-knowledge-automation",
+        "vf-knowledge-security",
+        "vf-knowledge-memory",
+        "vf-knowledge-routing",
+        "vf-knowledge-mcp",
+        "vf-knowledge-ecommerce",
+        "vf-knowledge-seo"
+      ]
+    },
+    {
+      "id": "vf-security",
+      "type": "topic",
+      "status": "planned",
+      "indexable": true,
+      "title": "VektorFlow Security",
+      "path": "/vektorflow/security",
+      "pillar": "platform",
+      "concepts": [
+        "security",
+        "authentication",
+        "risk",
+        "monitoring",
+        "observability"
+      ],
+      "relatedAgents": [
+        "aegis",
+        "arbiter",
+        "sentinel"
+      ],
+      "linksOutTo": [
+        "vf-agent-aegis",
+        "vf-agent-arbiter",
+        "vf-agent-sentinel",
+        "vf-hermes",
+        "vf-architecture",
+        "vf-dev-auth"
+      ]
+    },
+    {
+      "id": "vf-agent-hawk",
+      "type": "agent",
+      "status": "target",
+      "indexable": true,
+      "title": "Hawk",
+      "path": "/vektorflow/agents/hawk",
+      "pillar": "agents",
+      "concepts": [
+        "research",
+        "discovery",
+        "market intelligence"
+      ],
+      "relatedAgents": [
+        "smaug",
+        "architect",
+        "shadow",
+        "oracle"
+      ],
+      "linksOutTo": [
+        "vf-agent-smaug",
+        "vf-agent-shadow",
+        "vf-agent-oracle",
+        "vf-knowledge-agents",
+        "vf-usecase-product-research"
+      ]
+    },
+    {
+      "id": "vf-agent-smaug",
+      "type": "agent",
+      "status": "target",
+      "indexable": true,
+      "title": "Smaug",
+      "path": "/vektorflow/agents/smaug",
+      "pillar": "agents",
+      "concepts": [
+        "opportunity analysis",
+        "competitive intelligence"
+      ],
+      "relatedAgents": [
+        "hawk",
+        "pivot",
+        "oracle",
+        "shadow"
+      ],
+      "linksOutTo": [
+        "vf-agent-hawk",
+        "vf-agent-pivot",
+        "vf-agent-oracle",
+        "vf-agent-shadow"
+      ]
+    },
+    {
+      "id": "vf-agent-architect",
+      "type": "agent",
+      "status": "target",
+      "indexable": true,
+      "title": "Architect",
+      "path": "/vektorflow/agents/architect",
+      "pillar": "agents",
+      "concepts": [
+        "planning",
+        "workflow design",
+        "agent coordination"
+      ],
+      "relatedAgents": [
+        "all-target-agents"
+      ],
+      "linksOutTo": [
+        "vf-architecture",
+        "vf-hermes",
+        "vf-knowledge-orchestration",
+        "vf-agent-rook",
+        "vf-agent-cerebrum"
+      ]
+    },
+    {
+      "id": "vf-agent-davinci",
+      "type": "agent",
+      "status": "target",
+      "indexable": true,
+      "title": "DaVinci",
+      "path": "/vektorflow/agents/davinci",
+      "pillar": "agents",
+      "concepts": [
+        "creative generation",
+        "product content",
+        "visual content"
+      ],
+      "relatedAgents": [
+        "viraldet",
+        "bundler"
+      ],
+      "linksOutTo": [
+        "vf-agent-viraldet",
+        "vf-agent-bundler",
+        "vf-usecase-content"
+      ]
+    },
+    {
+      "id": "vf-agent-rook",
+      "type": "agent",
+      "status": "target",
+      "indexable": true,
+      "title": "Rook",
+      "path": "/vektorflow/agents/rook",
+      "pillar": "agents",
+      "concepts": [
+        "execution",
+        "workflow operations",
+        "task automation"
+      ],
+      "relatedAgents": [
+        "architect",
+        "fulfill"
+      ],
+      "linksOutTo": [
+        "vf-agent-architect",
+        "vf-agent-echo",
+        "vf-usecase-automation"
+      ]
+    },
+    {
+      "id": "vf-agent-aegis",
+      "type": "agent",
+      "status": "target",
+      "indexable": true,
+      "title": "Aegis",
+      "path": "/vektorflow/agents/aegis",
+      "pillar": "agents",
+      "concepts": [
+        "security",
+        "authentication",
+        "risk"
+      ],
+      "relatedAgents": [
+        "sentinel",
+        "arbiter",
+        "hermes"
+      ],
+      "linksOutTo": [
+        "vf-agent-sentinel",
+        "vf-agent-arbiter",
+        "vf-security",
+        "vf-dev-auth"
+      ]
+    },
+    {
+      "id": "vf-agent-arbiter",
+      "type": "agent",
+      "status": "target",
+      "indexable": true,
+      "title": "Arbiter",
+      "path": "/vektorflow/agents/arbiter",
+      "pillar": "agents",
+      "concepts": [
+        "decisions",
+        "validation",
+        "policy",
+        "governance"
+      ],
+      "relatedAgents": [
+        "aegis",
+        "architect"
+      ],
+      "linksOutTo": [
+        "vf-agent-aegis",
+        "vf-agent-architect",
+        "vf-security"
+      ]
+    },
+    {
+      "id": "vf-agent-sentinel",
+      "type": "agent",
+      "status": "target",
+      "indexable": true,
+      "title": "Sentinel",
+      "path": "/vektorflow/agents/sentinel",
+      "pillar": "agents",
+      "concepts": [
+        "monitoring",
+        "threats",
+        "observability"
+      ],
+      "relatedAgents": [
+        "aegis",
+        "hermes"
+      ],
+      "linksOutTo": [
+        "vf-agent-aegis",
+        "vf-hermes",
+        "vf-security"
+      ]
+    },
+    {
+      "id": "vf-agent-echo",
+      "type": "agent",
+      "status": "target",
+      "indexable": true,
+      "title": "Echo",
+      "path": "/vektorflow/agents/echo",
+      "pillar": "agents",
+      "concepts": [
+        "messaging",
+        "notifications",
+        "feedback",
+        "communication"
+      ],
+      "relatedAgents": [
+        "hermes",
+        "rook"
+      ],
+      "linksOutTo": [
+        "vf-hermes",
+        "vf-agent-rook",
+        "vf-usecase-customer-ops"
+      ]
+    },
+    {
+      "id": "vf-agent-cerebrum",
+      "type": "agent",
+      "status": "target",
+      "indexable": true,
+      "title": "Cerebrum",
+      "path": "/vektorflow/agents/cerebrum",
+      "pillar": "agents",
+      "concepts": [
+        "memory",
+        "knowledge",
+        "context"
+      ],
+      "relatedAgents": [
+        "hermes",
+        "architect",
+        "oracle"
+      ],
+      "linksOutTo": [
+        "vf-hermes",
+        "vf-architecture",
+        "vf-agent-oracle",
+        "vf-knowledge-memory"
+      ]
+    },
+    {
+      "id": "vf-agent-viraldet",
+      "type": "agent",
+      "status": "target",
+      "indexable": true,
+      "title": "ViralDet",
+      "path": "/vektorflow/agents/viraldet",
+      "pillar": "agents",
+      "concepts": [
+        "trends",
+        "virality",
+        "social intelligence"
+      ],
+      "relatedAgents": [
+        "hawk",
+        "davinci"
+      ],
+      "linksOutTo": [
+        "vf-agent-hawk",
+        "vf-agent-davinci",
+        "vf-usecase-marketing"
+      ]
+    },
+    {
+      "id": "vf-agent-shadow",
+      "type": "agent",
+      "status": "target",
+      "indexable": true,
+      "title": "Shadow",
+      "path": "/vektorflow/agents/shadow",
+      "pillar": "agents",
+      "concepts": [
+        "competitor monitoring",
+        "hidden signals",
+        "research"
+      ],
+      "relatedAgents": [
+        "hawk",
+        "smaug",
+        "oracle"
+      ],
+      "linksOutTo": [
+        "vf-agent-hawk",
+        "vf-agent-smaug",
+        "vf-agent-oracle",
+        "vf-usecase-product-research"
+      ]
+    },
+    {
+      "id": "vf-agent-bundler",
+      "type": "agent",
+      "status": "target",
+      "indexable": true,
+      "title": "Bundler",
+      "path": "/vektorflow/agents/bundler",
+      "pillar": "agents",
+      "concepts": [
+        "bundles",
+        "offers",
+        "product combinations"
+      ],
+      "relatedAgents": [
+        "davinci",
+        "pivot"
+      ],
+      "linksOutTo": [
+        "vf-agent-davinci",
+        "vf-agent-pivot",
+        "vf-usecase-ecommerce"
+      ]
+    },
+    {
+      "id": "vf-agent-pivot",
+      "type": "agent",
+      "status": "target",
+      "indexable": true,
+      "title": "Pivot",
+      "path": "/vektorflow/agents/pivot",
+      "pillar": "agents",
+      "concepts": [
+        "strategy",
+        "adaptation",
+        "experimentation",
+        "optimization"
+      ],
+      "relatedAgents": [
+        "oracle",
+        "smaug",
+        "bundler"
+      ],
+      "linksOutTo": [
+        "vf-agent-oracle",
+        "vf-agent-smaug",
+        "vf-agent-bundler",
+        "vf-usecase-automation"
+      ]
+    },
+    {
+      "id": "vf-agent-oracle",
+      "type": "agent",
+      "status": "target",
+      "indexable": true,
+      "title": "Oracle",
+      "path": "/vektorflow/agents/oracle",
+      "pillar": "agents",
+      "concepts": [
+        "prediction",
+        "forecasting",
+        "analytics"
+      ],
+      "relatedAgents": [
+        "cerebrum",
+        "pivot",
+        "hawk",
+        "smaug"
+      ],
+      "linksOutTo": [
+        "vf-agent-cerebrum",
+        "vf-agent-pivot",
+        "vf-agent-hawk",
+        "vf-agent-smaug",
+        "vf-knowledge-agents"
+      ]
+    },
+    {
+      "id": "vf-usecase-ecommerce",
+      "type": "use-case",
+      "status": "planned",
+      "indexable": true,
+      "title": "E-commerce Automation",
+      "path": "/use-cases/ecommerce",
+      "pillar": "use-cases",
+      "concepts": [
+        "e-commerce",
+        "automation",
+        "commerce"
+      ],
+      "relatedAgents": [
+        "bundler",
+        "rook",
+        "pivot",
+        "oracle"
+      ],
+      "linksOutTo": [
+        "vf-agent-bundler",
+        "vf-agent-rook",
+        "vf-agent-pivot",
+        "vf-agent-oracle",
+        "vf-int-shopify"
+      ]
+    },
+    {
+      "id": "vf-usecase-automation",
+      "type": "use-case",
+      "status": "planned",
+      "indexable": true,
+      "title": "Workflow Automation",
+      "path": "/use-cases/automation",
+      "pillar": "use-cases",
+      "concepts": [
+        "automation",
+        "workflows",
+        "execution"
+      ],
+      "relatedAgents": [
+        "architect",
+        "rook",
+        "pivot"
+      ],
+      "linksOutTo": [
+        "vf-agent-architect",
+        "vf-agent-rook",
+        "vf-agent-pivot",
+        "vf-knowledge-automation"
+      ]
+    },
+    {
+      "id": "vf-usecase-marketing",
+      "type": "use-case",
+      "status": "planned",
+      "indexable": true,
+      "title": "AI Marketing Automation",
+      "path": "/use-cases/marketing",
+      "pillar": "use-cases",
+      "concepts": [
+        "marketing",
+        "trends",
+        "content",
+        "social intelligence"
+      ],
+      "relatedAgents": [
+        "viraldet",
+        "davinci",
+        "hawk"
+      ],
+      "linksOutTo": [
+        "vf-agent-viraldet",
+        "vf-agent-davinci",
+        "vf-agent-hawk"
+      ]
+    },
+    {
+      "id": "vf-usecase-product-research",
+      "type": "use-case",
+      "status": "planned",
+      "indexable": true,
+      "title": "AI Product Research",
+      "path": "/use-cases/product-research",
+      "pillar": "use-cases",
+      "concepts": [
+        "product research",
+        "market intelligence",
+        "competitive intelligence"
+      ],
+      "relatedAgents": [
+        "hawk",
+        "smaug",
+        "shadow"
+      ],
+      "linksOutTo": [
+        "vf-agent-hawk",
+        "vf-agent-smaug",
+        "vf-agent-shadow",
+        "vf-knowledge-ecommerce"
+      ]
+    },
+    {
+      "id": "vf-usecase-content",
+      "type": "use-case",
+      "status": "planned",
+      "indexable": true,
+      "title": "AI Content Generation",
+      "path": "/use-cases/content",
+      "pillar": "use-cases",
+      "concepts": [
+        "content generation",
+        "product content",
+        "creative automation"
+      ],
+      "relatedAgents": [
+        "davinci",
+        "viraldet"
+      ],
+      "linksOutTo": [
+        "vf-agent-davinci",
+        "vf-agent-viraldet",
+        "vf-knowledge-agents"
+      ]
+    },
+    {
+      "id": "vf-usecase-customer-ops",
+      "type": "use-case",
+      "status": "planned",
+      "indexable": true,
+      "title": "AI Customer Operations",
+      "path": "/use-cases/customer-operations",
+      "pillar": "use-cases",
+      "concepts": [
+        "customer operations",
+        "communication",
+        "notifications",
+        "feedback"
+      ],
+      "relatedAgents": [
+        "echo",
+        "rook",
+        "hermes"
+      ],
+      "linksOutTo": [
+        "vf-agent-echo",
+        "vf-agent-rook",
+        "vf-hermes"
+      ]
+    },
+    {
+      "id": "vf-usecase-multi-agent",
+      "type": "use-case",
+      "status": "planned",
+      "indexable": true,
+      "title": "Multi-Agent Workflows",
+      "path": "/use-cases/multi-agent-workflows",
+      "pillar": "use-cases",
+      "concepts": [
+        "multi-agent systems",
+        "orchestration",
+        "delegation",
+        "coordination"
+      ],
+      "relatedAgents": [
+        "architect",
+        "rook",
+        "cerebrum",
+        "hermes"
+      ],
+      "linksOutTo": [
+        "vf-agent-architect",
+        "vf-agent-rook",
+        "vf-agent-cerebrum",
+        "vf-hermes",
+        "vf-knowledge-orchestration"
+      ]
+    },
+    {
+      "id": "vf-int-shopify",
+      "type": "integration",
+      "status": "planned",
+      "indexable": true,
+      "title": "Shopify Integration",
+      "path": "/integrations/shopify",
+      "pillar": "integrations",
+      "concepts": [
+        "shopify",
+        "e-commerce",
+        "store integration"
+      ],
+      "relatedAgents": [
+        "bundler",
+        "rook",
+        "pivot"
+      ],
+      "linksOutTo": [
+        "vf-usecase-ecommerce",
+        "vf-agent-bundler",
+        "vf-agent-rook",
+        "vf-agent-pivot"
+      ]
+    },
+    {
+      "id": "vf-int-hermes",
+      "type": "integration",
+      "status": "planned",
+      "indexable": true,
+      "title": "Hermes Integration",
+      "path": "/integrations/hermes",
+      "pillar": "integrations",
+      "concepts": [
+        "hermes",
+        "agent operations",
+        "automation"
+      ],
+      "relatedAgents": [
+        "architect",
+        "cerebrum",
+        "echo"
+      ],
+      "linksOutTo": [
+        "vf-hermes",
+        "vf-agent-architect",
+        "vf-agent-cerebrum",
+        "vf-agent-echo"
+      ]
+    },
+    {
+      "id": "vf-int-supabase",
+      "type": "integration",
+      "status": "planned",
+      "indexable": true,
+      "title": "Supabase Integration",
+      "path": "/integrations/supabase",
+      "pillar": "integrations",
+      "concepts": [
+        "supabase",
+        "database",
+        "backend",
+        "authentication"
+      ],
+      "linksOutTo": [
+        "vf-architecture",
+        "vf-dev-api",
+        "vf-dev-auth"
+      ]
+    },
+    {
+      "id": "vf-int-mcp",
+      "type": "integration",
+      "status": "planned",
+      "indexable": true,
+      "title": "MCP Integration",
+      "path": "/integrations/mcp",
+      "pillar": "integrations",
+      "concepts": [
+        "mcp",
+        "tools",
+        "agent interoperability"
+      ],
+      "relatedAgents": [
+        "architect",
+        "hermes",
+        "aegis"
+      ],
+      "linksOutTo": [
+        "vf-knowledge-mcp",
+        "vf-hermes",
+        "vf-dev-mcp",
+        "vf-agent-architect",
+        "vf-agent-aegis"
+      ]
+    },
+    {
+      "id": "vf-int-api",
+      "type": "integration",
+      "status": "planned",
+      "indexable": true,
+      "title": "VektorFlow API",
+      "path": "/integrations/api",
+      "pillar": "integrations",
+      "concepts": [
+        "api",
+        "integration",
+        "automation"
+      ],
+      "linksOutTo": [
+        "vf-dev-api",
+        "vf-architecture"
+      ]
+    },
+    {
+      "id": "vf-dev-api",
+      "type": "developer-doc",
+      "status": "planned",
+      "indexable": true,
+      "title": "VektorFlow API",
+      "path": "/developers/api",
+      "pillar": "developers",
+      "concepts": [
+        "api",
+        "endpoints",
+        "automation",
+        "integration"
+      ],
+      "linksOutTo": [
+        "vf-architecture",
+        "vf-int-api",
+        "vf-dev-auth"
+      ]
+    },
+    {
+      "id": "vf-dev-agents",
+      "type": "developer-doc",
+      "status": "planned",
+      "indexable": true,
+      "title": "Building VektorFlow Agents",
+      "path": "/developers/agents",
+      "pillar": "developers",
+      "concepts": [
+        "agents",
+        "tools",
+        "routing",
+        "agent development"
+      ],
+      "linksOutTo": [
+        "vf-agents",
+        "vf-architecture",
+        "vf-dev-workflows"
+      ]
+    },
+    {
+      "id": "vf-dev-workflows",
+      "type": "developer-doc",
+      "status": "planned",
+      "indexable": true,
+      "title": "VektorFlow Workflows",
+      "path": "/developers/workflows",
+      "pillar": "developers",
+      "concepts": [
+        "workflows",
+        "orchestration",
+        "automation"
+      ],
+      "linksOutTo": [
+        "vf-architecture",
+        "vf-agent-architect",
+        "vf-agent-rook",
+        "vf-dev-agents"
+      ]
+    },
+    {
+      "id": "vf-dev-mcp",
+      "type": "developer-doc",
+      "status": "planned",
+      "indexable": true,
+      "title": "VektorFlow MCP",
+      "path": "/developers/mcp",
+      "pillar": "developers",
+      "concepts": [
+        "mcp",
+        "tools",
+        "agent interoperability"
+      ],
+      "linksOutTo": [
+        "vf-int-mcp",
+        "vf-knowledge-mcp",
+        "vf-hermes"
+      ]
+    },
+    {
+      "id": "vf-dev-auth",
+      "type": "developer-doc",
+      "status": "planned",
+      "indexable": true,
+      "title": "VektorFlow Authentication",
+      "path": "/developers/authentication",
+      "pillar": "developers",
+      "concepts": [
+        "authentication",
+        "security",
+        "api"
+      ],
+      "relatedAgents": [
+        "aegis",
+        "arbiter",
+        "sentinel"
+      ],
+      "linksOutTo": [
+        "vf-security",
+        "vf-agent-aegis",
+        "vf-agent-arbiter",
+        "vf-agent-sentinel"
+      ]
+    },
+    {
+      "id": "vf-dev-deployment",
+      "type": "developer-doc",
+      "status": "planned",
+      "indexable": true,
+      "title": "VektorFlow Deployment",
+      "path": "/developers/deployment",
+      "pillar": "developers",
+      "concepts": [
+        "deployment",
+        "hosting",
+        "operations"
+      ],
+      "linksOutTo": [
+        "vf-architecture",
+        "vf-dev-api",
+        "vf-hermes"
+      ]
+    },
+    {
+      "id": "vf-knowledge-orchestration",
+      "type": "knowledge",
+      "status": "planned",
+      "indexable": true,
+      "title": "AI Agent Orchestration",
+      "path": "/knowledge/ai-agent-orchestration",
+      "pillar": "knowledge",
+      "concepts": [
+        "multi-agent systems",
+        "routing",
+        "coordination",
+        "communication",
+        "delegation",
+        "workflows",
+        "memory",
+        "tools",
+        "mcp"
+      ],
+      "relatedAgents": [
+        "architect",
+        "cerebrum",
+        "hermes"
+      ],
+      "linksOutTo": [
+        "vf-agents",
+        "vf-architecture",
+        "vf-hermes",
+        "vf-agent-architect",
+        "vf-agent-cerebrum",
+        "vf-usecase-multi-agent"
+      ]
+    },
+    {
+      "id": "vf-knowledge-agents",
+      "type": "knowledge",
+      "status": "planned",
+      "indexable": true,
+      "title": "AI Agents",
+      "path": "/knowledge/ai-agents",
+      "pillar": "knowledge",
+      "concepts": [
+        "ai agents",
+        "autonomous agents",
+        "tools",
+        "memory"
+      ],
+      "linksOutTo": [
+        "vf-agents",
+        "vf-agent-hawk",
+        "vf-agent-architect",
+        "vf-agent-cerebrum",
+        "vf-usecase-content"
+      ]
+    },
+    {
+      "id": "vf-knowledge-automation",
+      "type": "knowledge",
+      "status": "planned",
+      "indexable": true,
+      "title": "AI Automation",
+      "path": "/knowledge/ai-automation",
+      "pillar": "knowledge",
+      "concepts": [
+        "automation",
+        "workflows",
+        "agents"
+      ],
+      "linksOutTo": [
+        "vf-use-cases",
+        "vf-agent-rook",
+        "vf-agent-pivot",
+        "vf-architecture"
+      ]
+    },
+    {
+      "id": "vf-knowledge-security",
+      "type": "knowledge",
+      "status": "planned",
+      "indexable": true,
+      "title": "AI Agent Security",
+      "path": "/knowledge/ai-agent-security",
+      "pillar": "knowledge",
+      "concepts": [
+        "security",
+        "authentication",
+        "monitoring",
+        "risk"
+      ],
+      "relatedAgents": [
+        "aegis",
+        "arbiter",
+        "sentinel"
+      ],
+      "linksOutTo": [
+        "vf-security",
+        "vf-agent-aegis",
+        "vf-agent-arbiter",
+        "vf-agent-sentinel",
+        "vf-hermes"
+      ]
+    },
+    {
+      "id": "vf-knowledge-memory",
+      "type": "knowledge",
+      "status": "planned",
+      "indexable": true,
+      "title": "AI Agent Memory",
+      "path": "/knowledge/ai-agent-memory",
+      "pillar": "knowledge",
+      "concepts": [
+        "memory",
+        "knowledge",
+        "context"
+      ],
+      "relatedAgents": [
+        "cerebrum",
+        "hermes"
+      ],
+      "linksOutTo": [
+        "vf-agent-cerebrum",
+        "vf-hermes",
+        "vf-architecture"
+      ]
+    },
+    {
+      "id": "vf-knowledge-routing",
+      "type": "knowledge",
+      "status": "planned",
+      "indexable": true,
+      "title": "LLM Model Routing",
+      "path": "/knowledge/llm-model-routing",
+      "pillar": "knowledge",
+      "concepts": [
+        "llm routing",
+        "model selection",
+        "fallbacks",
+        "providers",
+        "cost optimization"
+      ],
+      "linksOutTo": [
+        "vf-models",
+        "vf-hermes",
+        "vf-agent-architect"
+      ]
+    },
+    {
+      "id": "vf-knowledge-mcp",
+      "type": "knowledge",
+      "status": "planned",
+      "indexable": true,
+      "title": "Model Context Protocol (MCP)",
+      "path": "/knowledge/mcp",
+      "pillar": "knowledge",
+      "concepts": [
+        "mcp",
+        "tools",
+        "agent interoperability"
+      ],
+      "linksOutTo": [
+        "vf-int-mcp",
+        "vf-dev-mcp",
+        "vf-hermes"
+      ]
+    },
+    {
+      "id": "vf-knowledge-ecommerce",
+      "type": "knowledge",
+      "status": "planned",
+      "indexable": true,
+      "title": "AI E-commerce Automation",
+      "path": "/knowledge/ai-ecommerce-automation",
+      "pillar": "knowledge",
+      "concepts": [
+        "e-commerce",
+        "automation",
+        "product research",
+        "commerce"
+      ],
+      "linksOutTo": [
+        "vf-usecase-ecommerce",
+        "vf-agent-hawk",
+        "vf-agent-bundler",
+        "vf-int-shopify"
+      ]
+    },
+    {
+      "id": "vf-knowledge-seo",
+      "type": "knowledge",
+      "status": "planned",
+      "indexable": true,
+      "title": "AI SEO & Content Architecture",
+      "path": "/knowledge/ai-seo",
+      "pillar": "knowledge",
+      "concepts": [
+        "seo",
+        "internal linking",
+        "content architecture",
+        "knowledge graph"
+      ],
+      "linksOutTo": [
+        "vf-knowledge",
+        "vf-platform",
+        "vf-agents",
+        "vf-use-cases"
+      ]
+    },
+    {
+      "id": "vf-template-blog",
+      "type": "legacy-template",
+      "status": "exclude",
+      "indexable": false,
+      "title": "Starter Template Blog Content",
+      "path": "/blog",
+      "pillar": null,
+      "concepts": [
+        "template content"
+      ],
+      "linksOutTo": [],
+      "notes": "Current generic starter/demo posts should not enter the VektorFlow SEO graph until replaced or intentionally migrated."
+    }
+  ],
+  "agentCatalog": {
+    "all-target-agents": [
+      "hawk",
+      "smaug",
+      "architect",
+      "davinci",
+      "rook",
+      "aegis",
+      "arbiter",
+      "sentinel",
+      "echo",
+      "cerebrum",
+      "viraldet",
+      "shadow",
+      "bundler",
+      "pivot",
+      "oracle"
+    ],
+    "runtimeImplementationNote": "The target 15-agent content architecture must not be treated as proof of runtime implementation. Verify backend agent registration before describing an agent as operational."
+  },
+  "linkPatterns": [
+    {
+      "id": "hub-to-child",
+      "fromType": [
+        "hub"
+      ],
+      "toType": [
+        "agent",
+        "use-case",
+        "integration",
+        "developer-doc",
+        "knowledge",
+        "topic"
+      ],
+      "reason": "hierarchy"
+    },
+    {
+      "id": "agent-to-agent",
+      "fromType": [
+        "agent"
+      ],
+      "toType": [
+        "agent"
+      ],
+      "reason": "workflow or conceptual relationship"
+    },
+    {
+      "id": "agent-to-concept",
+      "fromType": [
+        "agent"
+      ],
+      "toType": [
+        "knowledge",
+        "use-case"
+      ],
+      "reason": "explain capability in context"
+    },
+    {
+      "id": "usecase-to-agent",
+      "fromType": [
+        "use-case"
+      ],
+      "toType": [
+        "agent"
+      ],
+      "reason": "show which agents support the use case"
+    },
+    {
+      "id": "integration-to-usecase",
+      "fromType": [
+        "integration"
+      ],
+      "toType": [
+        "use-case"
+      ],
+      "reason": "show practical application"
+    },
+    {
+      "id": "knowledge-to-product",
+      "fromType": [
+        "knowledge"
+      ],
+      "toType": [
+        "hub",
+        "agent",
+        "use-case",
+        "integration"
+      ],
+      "reason": "connect education to product"
+    },
+    {
+      "id": "developer-to-architecture",
+      "fromType": [
+        "developer-doc"
+      ],
+      "toType": [
+        "hub",
+        "topic"
+      ],
+      "reason": "implementation context"
+    }
+  ],
+  "generation": {
+    "defaultIncomingLinks": 3,
+    "defaultContextualOutgoingLinks": 5,
+    "maxAutoLinksPerSection": 4,
+    "excludePaths": [
+      "/blog"
+    ],
+    "doNotInventRoutes": true,
+    "preferSamePillar": true,
+    "preferSharedConcepts": true,
+    "preferDeclaredRelationships": true,
+    "requireCanonicalTarget": true
+  }
+}
