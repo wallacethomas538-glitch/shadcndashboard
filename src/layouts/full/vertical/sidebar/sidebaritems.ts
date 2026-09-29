@@ -8,7 +8,7 @@ Bot, Boxes, BrainCircuit, ChartNoAxesCombined, FlaskConical, Gauge,
 export interface ChildItem {
   id?: number | string; name: string; icon?: any; items?: ChildItem[]; url?: string;
   disabled?: boolean; subtitle?: string; badge?: boolean; badgeType?: string;
-  badgeContent?: string; isActive?: boolean; external?: boolean; isPro?: boolean;
+  badgeContent?: string; isActive?: boolean; external?: boolean; isPro?: boolean; color?: string;
 }
 export interface MenuItem {
   heading?: string; name?: string; icon?: any; id?: number | string; to?: string;
