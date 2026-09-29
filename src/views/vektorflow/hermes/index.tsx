@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import BreadcrumbComp from 'src/layouts/full/shared/breadcrumb/BreadcrumbComp';
+import VektorFlowNav from 'src/views/vektorflow/VektorFlowNav';
 
 import { vektorflowGet } from 'src/api/vektorflow';
 
@@ -8,6 +9,7 @@ export default function HermesPage() {
   const [loading, setLoading] = useState(true);
   useEffect(() => { vektorflowGet('/health').then(setHealth).catch(() => setHealth({ status: 'unreachable' })).finally(() => setLoading(false)); }, []);
   return <div className="flex flex-col gap-5">
+      <VektorFlowNav />
     <BreadcrumbComp title="Hermes" />
     <div className="rounded-2xl border bg-card p-6">
       <p className="text-xs font-semibold uppercase tracking-[0.18em] text-muted-foreground">Local AI Executive / Automation</p>
