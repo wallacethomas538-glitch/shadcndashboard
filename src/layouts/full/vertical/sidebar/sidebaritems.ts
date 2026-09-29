@@ -1,6 +1,6 @@
 import { uniqueId } from "lodash";
 import {
-  BarChart3, Bot, Boxes, BrainCircuit, ChartNoAxesCombined, FlaskConical, Gauge,
+Bot, Boxes, BrainCircuit, ChartNoAxesCombined, FlaskConical, Gauge,
   GitBranch, KeyRound, LineChart, Package, PanelsTopLeft, Search, Settings,
   ShieldCheck, ShoppingCart, Store, TrendingUp, WalletCards, Workflow, Zap
 } from "lucide-react";
