@@ -18,13 +18,7 @@ export default function AdsPage() {
     if (!prompt.trim() || loading) return;
     setLoading(true); setError(''); setImage('');
     try {
-      const res = await fetch(API_BASE + '/api/ads/generate-image', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ prompt: prompt.trim(), model, size }),
-      });
-      const data = await res.json();
-      if (!res.ok) throw new Error(data?.detail || `AdSpecialist returned ${res.status}`);
+      const data = await vektorflowPost('/api/ads/generate-image', { prompt: prompt.trim(), model, size });
       const url = data?.data?.[0]?.url;
       if (!url) throw new Error('The backend returned no image URL.');
       setImage(url);
