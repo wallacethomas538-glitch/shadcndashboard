@@ -8,7 +8,7 @@ const GATEWAY_BASE = import.meta.env.VITE_LLM_GATEWAY_URL || '';
 
 export default function ModelsPage() {
   const [health, setHealth] = useState<any>(null);
-  useEffect(() => { fetch(API_BASE + '/health').then(r => r.json()).then(setHealth).catch(() => setHealth({ status: 'unreachable' })); }, []);
+  useEffect(() => { vektorflowGet('/health').then(setHealth).catch(() => setHealth({ status: 'unreachable' })); }, []);
   return <div className="flex flex-col gap-5">
     <BreadcrumbComp title="Models & Providers" />
     <div className="rounded-2xl border bg-card p-6">
