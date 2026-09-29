@@ -4,7 +4,31 @@ import Header from './vertical/header/Header';
 import { SidebarInset, SidebarProvider } from 'src/components/ui/sidebar';
 import { cn } from 'src/lib/utils';
 import Footer from './shared/footer/Footer';
-import { Outlet } from 'react-router';
+import { Link, Outlet } from 'react-router';
+
+const vektorFlowPages = [
+  ['Command Center', '/'],
+  ['Agents', '/vektorflow/agents'],
+  ['Hermes', '/vektorflow/hermes'],
+  ['Models', '/vektorflow/models'],
+  ['Ad Studio', '/vektorflow/ads'],
+  ['Products', '/vektorflow/products'],
+  ['Inventory', '/vektorflow/inventory'],
+  ['Sales', '/vektorflow/sales'],
+  ['Stores', '/vektorflow/stores'],
+  ['Marketing', '/vektorflow/marketing'],
+  ['Content', '/vektorflow/content'],
+  ['Trends', '/vektorflow/trends'],
+  ['Competition', '/vektorflow/competition'],
+  ['Finance', '/vektorflow/finance'],
+  ['Experiments', '/vektorflow/experiments'],
+  ['Knowledge', '/vektorflow/knowledge'],
+  ['Security', '/vektorflow/security'],
+  ['Governance', '/vektorflow/governance'],
+  ['Oracle', '/vektorflow/oracle'],
+  ['Integrations', '/vektorflow/integrations'],
+  ['Settings', '/vektorflow/settings'],
+] as const;
 
 const FullLayout: FC = () => {
 
@@ -20,7 +44,22 @@ const FullLayout: FC = () => {
         {/* Top Header  */}
        <Header /> 
         
-          {/* Body Content  */}
+          {/* VektorFlow page navigation — always visible on desktop and mobile. */}
+        <nav aria-label="VektorFlow pages" className="border-b border-border bg-background px-4 py-2">
+          <div className="flex gap-1 overflow-x-auto no-scrollbar whitespace-nowrap">
+            {vektorFlowPages.map(([label, path]) => (
+              <Link
+                key={path}
+                to={path}
+                className="rounded-md px-3 py-2 text-sm font-medium text-muted-foreground hover:bg-accent hover:text-accent-foreground"
+              >
+                {label}
+              </Link>
+            ))}
+          </div>
+        </nav>
+
+        {/* Body Content  */}
           <div className="flex flex-1 flex-col gap-4 p-4">
           <div className={cn("w-full mx-auto", "container")}>
             <div className=" min-h-[calc(100vh-140px)]"><Outlet /></div>
