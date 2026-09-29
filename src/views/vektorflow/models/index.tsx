@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import BreadcrumbComp from 'src/layouts/full/shared/breadcrumb/BreadcrumbComp';
+import VektorFlowNav from 'src/views/vektorflow/VektorFlowNav';
 
 import { VEKTORFLOW_API_BASE, vektorflowGet } from 'src/api/vektorflow';
 
@@ -10,6 +11,7 @@ export default function ModelsPage() {
   const [health, setHealth] = useState<any>(null);
   useEffect(() => { vektorflowGet('/health').then(setHealth).catch(() => setHealth({ status: 'unreachable' })); }, []);
   return <div className="flex flex-col gap-5">
+      <VektorFlowNav />
     <BreadcrumbComp title="Models & Providers" />
     <div className="rounded-2xl border bg-card p-6">
       <p className="text-xs font-semibold uppercase tracking-[0.18em] text-muted-foreground">AI Control Plane</p>
