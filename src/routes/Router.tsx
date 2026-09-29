@@ -22,7 +22,7 @@ const auth = {
   maintenance: Loadable(lazy(() => import('../views/auth/maintenance'))),
 };
 
-const Router = [
+const Router: import("react-router").RouteObject[] = [
   { path: '/', element: <FullLayout />, children: [
     { path: '/', element: <ModernDashboard /> },
     { path: '/dashboards/modern', element: <ModernDashboard /> },
@@ -48,12 +48,12 @@ const Router = [
     { path: '*', element: <Navigate to="/auth/404" /> },
   ]},
   { path: '/', element: <BlankLayout />, children: [
-    { path: '/auth/auth2/login', element: auth.login },
-    { path: '/auth/auth2/register', element: auth.register },
-    { path: '/auth/auth2/forgot-password', element: auth.forgot },
-    { path: '/auth/auth2/reset-password', element: auth.reset },
-    { path: '/auth/auth2/two-steps', element: auth.two },
-    { path: '/auth/maintenance', element: auth.maintenance },
+    { path: '/auth/auth2/login', element: <auth.login /> },
+    { path: '/auth/auth2/register', element: <auth.register /> },
+    { path: '/auth/auth2/forgot-password', element: <auth.forgot /> },
+    { path: '/auth/auth2/reset-password', element: <auth.reset /> },
+    { path: '/auth/auth2/two-steps', element: <auth.two /> },
+    { path: '/auth/maintenance', element: <auth.maintenance /> },
     { path: '/auth/404', element: <Error /> },
   ]},
 ];
