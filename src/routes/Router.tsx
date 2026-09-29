@@ -11,6 +11,7 @@ const Workspace = Loadable(lazy(() => import('../views/vektorflow/workspace')));
 const AgentsPage = Loadable(lazy(() => import("../views/vektorflow/agents")));
 const ModelsPage = Loadable(lazy(() => import("../views/vektorflow/models")));
 const HermesPage = Loadable(lazy(() => import("../views/vektorflow/hermes")));
+const AdsPage = Loadable(lazy(() => import("../views/vektorflow/ads")));
 const Error = Loadable(lazy(() => import('../views/auth/error')));
 
 const auth = {
