@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useState } from 'react';
 import { useLocation, Link } from 'react-router';
 import BreadcrumbComp from 'src/layouts/full/shared/breadcrumb/BreadcrumbComp';
+import VektorFlowNav from 'src/views/vektorflow/VektorFlowNav';
 
 import { vektorflowGet, vektorflowPost } from 'src/api/vektorflow';
 
@@ -85,6 +86,7 @@ function Workspace() {
 
   return (
     <div className="flex flex-col gap-5">
+      <VektorFlowNav />
       <BreadcrumbComp title={config.title} />
       <div className="rounded-2xl border bg-card p-6">
         <div className="flex flex-col gap-2 md:flex-row md:items-end md:justify-between">
