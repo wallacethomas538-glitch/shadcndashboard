@@ -29,10 +29,6 @@ function AgentsPage() {
 
   useEffect(() => {
     vektorflowGet('/api/agents')
-      .then(async (res) => {
-        if (!res.ok) throw new Error(`Agents API returned ${res.status}`);
-        return res.json();
-      })
       .then((roster) => {
         const nextAgents = roster.agents || [];
         setAgents(nextAgents);
@@ -61,10 +57,8 @@ function AgentsPage() {
     setInput('');
     try {
       const history = messages.map((item) => ({ role: item.role, content: item.text }));
-      const res = await vektorflowPost(`/api/agents/${encodeURIComponent(selected.name)}/chat`, { message, conversation_history: history });
-      const data = await res.json();
-      if (!res.ok) throw new Error(data.detail || `Agent returned ${res.status}`);
-      const result = data.result || {};
+      const data = await vektorflowPost(`/api/agents/${encodeURIComponent(selected.name)}/chat`, { message, conversation_history: history });
+      const result = data?.result || {};
       const text = result.message || result.response || JSON.stringify(result, null, 2);
       setMessages((current) => [...current, { role: 'agent', text }]);
     } catch (err) {
