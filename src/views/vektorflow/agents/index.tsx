@@ -1,7 +1,7 @@
 import { FormEvent, useEffect, useMemo, useState } from 'react';
 import { Link, useNavigate, useParams } from 'react-router';
 import BreadcrumbComp from 'src/layouts/full/shared/breadcrumb/BreadcrumbComp';
-import { getContentNode } from 'src/content/vektorflow-content';
+import VektorFlowNav from 'src/views/vektorflow/VektorFlowNav';
 
 const contentNode = getContentNode('vf-agents');
 const pageTitle = contentNode?.title ?? 'VektorFlow Agents';
@@ -76,6 +76,7 @@ function AgentsPage() {
 
   return (
     <div className="flex flex-col gap-4">
+      <VektorFlowNav />
       <BreadcrumbComp title={pageTitle} />
       <div className="grid gap-4 lg:grid-cols-[300px_1fr]">
         <section className="rounded-xl border bg-card p-4">
