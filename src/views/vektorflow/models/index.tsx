@@ -1,7 +1,9 @@
 import { useEffect, useState } from 'react';
 import BreadcrumbComp from 'src/layouts/full/shared/breadcrumb/BreadcrumbComp';
 
-const API_BASE = import.meta.env.VITE_VEKTORFLOW_API_URL || 'https://vektorflow-15xr-1.onrender.com';
+import { VEKTORFLOW_API_BASE, vektorflowGet } from 'src/api/vektorflow';
+
+const API_BASE = VEKTORFLOW_API_BASE;
 const GATEWAY_BASE = import.meta.env.VITE_LLM_GATEWAY_URL || '';
 
 export default function ModelsPage() {
