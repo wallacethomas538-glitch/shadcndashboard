@@ -19,7 +19,7 @@ const item = (name: string, url: string, icon: any): ChildItem => ({ id: uniqueI
 const SidebarContent: MenuItem[] = [
   { heading: "VektorFlow", items: [
     item("Command Center", "/", Gauge), item("Agents", "/vektorflow/agents", Bot),
-    item("Hermes", "/vektorflow/hermes", Zap), item("Models", "/vektorflow/models", BrainCircuit),
+    item("Hermes", "/vektorflow/hermes", Zap), item("Models", "/vektorflow/models", BrainCircuit), item("Ad Studio", "/vektorflow/ads", PanelsTopLeft),
   ]},
   { heading: "Commerce", items: [
     item("Products", "/vektorflow/products", Package), item("Inventory", "/vektorflow/inventory", Boxes),
