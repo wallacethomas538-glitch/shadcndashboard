@@ -4,17 +4,9 @@ import { getContentNode } from 'src/content/vektorflow-content';
 
 const contentNode = getContentNode('vf-agents');
 const pageTitle = contentNode?.title ?? 'vf-agents';
-const API_BASE = 'https://vektorflow-15xr.onrender.com';
+const API_BASE = import.meta.env.VITE_VEKTORFLOW_API_URL || 'https://vektorflow-15xr.onrender.com';
 
 type Agent = { name: string; description: string; status?: string };
-
-const DEPLOYED_AGENTS: Agent[] = [
-  { name: 'Scout', description: 'Discovers winning products and market trends.' },
-  { name: 'Source', description: 'Finds reliable suppliers and compares prices.' },
-  { name: 'Price', description: 'Optimizes product pricing for maximum profit.' },
-  { name: 'Fulfill', description: 'Manages inventory and automates order fulfillment.' },
-  { name: 'Analyze', description: 'Analyzes sales, revenue, and business performance.' },
-];
 
 function AgentsPage() {
   const [agents, setAgents] = useState<Agent[]>([]);
@@ -23,8 +15,12 @@ function AgentsPage() {
 
   useEffect(() => {
     Promise.all([
-      fetch(`${API_BASE}/api/info`).then((res) => {
+      fetch(`${API_BASE}/api/info`).then(async (res) => {
         if (!res.ok) throw new Error(`API info returned ${res.status}`);
+        return res.json();
+      }),
+      fetch(`${API_BASE}/api/agents`).then(async (res) => {
+        if (!res.ok) throw new Error(`Agents API returned ${res.status}`);
         return res.json();
       }),
       fetch(`${API_BASE}/api/agent/command`, {
@@ -36,9 +32,9 @@ function AgentsPage() {
         return res.json();
       }),
     ])
-      .then(() => {
-        setAgents(DEPLOYED_AGENTS.map((agent) => ({ ...agent, status: 'connected' })));
-        setConnection('Render API + agent orchestrator connected');
+      .then(([, roster]) => {
+        setAgents((roster.agents || []).map((agent: Agent) => ({ ...agent, status: 'connected' })));
+        setConnection(`Render API + 15-agent orchestrator connected (${roster.count || 0} agents)`);
       })
       .catch((err) => {
         setError(err instanceof Error ? err.message : String(err));
@@ -52,7 +48,7 @@ function AgentsPage() {
       <div className="rounded-xl border bg-card p-6">
         <h2 className="text-2xl font-semibold">{pageTitle}</h2>
         <p className="mt-2 text-muted-foreground">
-          Manage and monitor the agents deployed behind the VektorFlow Render API.
+          Manage and monitor the full VektorFlow 15XR autonomous e-commerce team.
         </p>
         <p className="mt-4 text-sm font-medium">{connection}</p>
         {error && <p className="mt-2 text-destructive">{error}</p>}
