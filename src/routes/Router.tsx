@@ -30,6 +30,7 @@ const Router: import("react-router").RouteObject[] = [
     { path: '/vektorflow/agents/:agentName', element: <AgentsPage /> },
     { path: '/vektorflow/models', element: <ModelsPage /> },
     { path: '/vektorflow/hermes', element: <HermesPage /> },
+    { path: '/vektorflow/ads', element: <AdsPage /> },
     { path: '/vektorflow/products', element: <Workspace /> },
     { path: '/vektorflow/inventory', element: <Workspace /> },
     { path: '/vektorflow/sales', element: <Workspace /> },
