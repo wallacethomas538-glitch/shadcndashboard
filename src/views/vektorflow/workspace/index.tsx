@@ -44,13 +44,7 @@ function Workspace() {
   const load = async (endpoint: string, method: 'GET' | 'POST' = 'GET', body?: any) => {
     setState({ loading: true, error: '', data: null });
     try {
-      const res = await fetch(API_BASE + endpoint, {
-        method,
-        headers: { 'Content-Type': 'application/json' },
-        ...(method === 'POST' ? { body: JSON.stringify(body ?? {}) } : {}),
-      });
-      if (!res.ok) throw new Error(`${endpoint} returned ${res.status}`);
-      const data = await res.json();
+      const res = await const data = method === 'POST' ? await vektorflowPost(endpoint, body ?? {}) : await vektorflowGet(endpoint);
       setState({ loading: false, error: '', data });
       return data;
     } catch (e) {
@@ -61,9 +55,9 @@ function Workspace() {
   useEffect(() => {
     if (isCommandCenter) {
       Promise.all([
-        fetch(API_BASE + '/health').then(r => r.json()),
-        fetch(API_BASE + '/api/info').then(r => r.json()),
-        fetch(API_BASE + '/api/agents').then(r => r.json()),
+        vektorflowGet('/health'),
+        vektorflowGet('/api/info'),
+        vektorflowGet('/api/agents'),
         fetch(API_BASE + '/api/tasks').then(r => r.json()).catch(() => null),
         fetch(API_BASE + '/api/inventory/alerts').then(r => r.json()).catch(() => null),
       ]).then(([health, info, agents, tasks, alerts]) => setState({ loading: false, error: '', data: { health, info, agents, tasks, alerts } }))
@@ -79,13 +73,7 @@ function Workspace() {
     if (!command.trim()) return;
     setResult(null);
     try {
-      const res = await fetch(API_BASE + '/api/agents/run', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ goal: command.trim() }),
-      });
-      const data = await res.json();
-      if (!res.ok) throw new Error(data?.detail || `Orchestrator returned ${res.status}`);
+      const data = await vektorflowPost('/api/agents/run', { goal: command.trim() });
       setResult(data);
     } catch (e) {
       setResult({ error: e instanceof Error ? e.message : String(e) });
