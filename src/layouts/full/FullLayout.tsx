@@ -4,31 +4,7 @@ import Header from './vertical/header/Header';
 import { SidebarInset, SidebarProvider } from 'src/components/ui/sidebar';
 import { cn } from 'src/lib/utils';
 import Footer from './shared/footer/Footer';
-import { Link, Outlet } from 'react-router';
-
-const vektorFlowPages = [
-  ['Command Center', '/'],
-  ['Agents', '/vektorflow/agents'],
-  ['Hermes', '/vektorflow/hermes'],
-  ['Models', '/vektorflow/models'],
-  ['Ad Studio', '/vektorflow/ads'],
-  ['Products', '/vektorflow/products'],
-  ['Inventory', '/vektorflow/inventory'],
-  ['Sales', '/vektorflow/sales'],
-  ['Stores', '/vektorflow/stores'],
-  ['Marketing', '/vektorflow/marketing'],
-  ['Content', '/vektorflow/content'],
-  ['Trends', '/vektorflow/trends'],
-  ['Competition', '/vektorflow/competition'],
-  ['Finance', '/vektorflow/finance'],
-  ['Experiments', '/vektorflow/experiments'],
-  ['Knowledge', '/vektorflow/knowledge'],
-  ['Security', '/vektorflow/security'],
-  ['Governance', '/vektorflow/governance'],
-  ['Oracle', '/vektorflow/oracle'],
-  ['Integrations', '/vektorflow/integrations'],
-  ['Settings', '/vektorflow/settings'],
-] as const;
+import { Outlet } from 'react-router';
 
 const FullLayout: FC = () => {
 
