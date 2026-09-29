@@ -2,9 +2,7 @@ import { useEffect, useMemo, useState } from 'react';
 import { useLocation, Link } from 'react-router';
 import BreadcrumbComp from 'src/layouts/full/shared/breadcrumb/BreadcrumbComp';
 
-import { VEKTORFLOW_API_BASE, vektorflowGet, vektorflowPost } from 'src/api/vektorflow';
-
-const API_BASE = VEKTORFLOW_API_BASE;
+import { vektorflowGet, vektorflowPost } from 'src/api/vektorflow';
 
 type ApiState = { loading: boolean; error: string; data: any };
 
