@@ -1,5 +1,6 @@
 import { FormEvent, useState } from 'react';
 import BreadcrumbComp from 'src/layouts/full/shared/breadcrumb/BreadcrumbComp';
+import VektorFlowNav from 'src/views/vektorflow/VektorFlowNav';
 
 import { vektorflowPost } from 'src/api/vektorflow';
 
@@ -26,6 +27,7 @@ export default function AdsPage() {
   }
 
   return <div className="flex flex-col gap-5">
+      <VektorFlowNav />
     <BreadcrumbComp title="Ad Studio" />
     <div className="rounded-2xl border bg-card p-6">
       <p className="text-xs font-semibold uppercase tracking-[0.18em] text-muted-foreground">AdSpecialist · Pollinations</p>
