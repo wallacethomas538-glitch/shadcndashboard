@@ -1,9 +1,7 @@
 import { useEffect, useState } from 'react';
 import BreadcrumbComp from 'src/layouts/full/shared/breadcrumb/BreadcrumbComp';
 
-import { VEKTORFLOW_API_BASE, vektorflowGet } from 'src/api/vektorflow';
-
-const API_BASE = VEKTORFLOW_API_BASE;
+import { vektorflowGet } from 'src/api/vektorflow';
 
 export default function HermesPage() {
   const [health, setHealth] = useState<any>(null);
