@@ -1,7 +1,9 @@
 import { FormEvent, useState } from 'react';
 import BreadcrumbComp from 'src/layouts/full/shared/breadcrumb/BreadcrumbComp';
 
-const API_BASE = import.meta.env.VITE_VEKTORFLOW_API_URL || 'https://vektorflow-15xr-1.onrender.com';
+import { VEKTORFLOW_API_BASE, vektorflowPost } from 'src/api/vektorflow';
+
+const API_BASE = VEKTORFLOW_API_BASE;
 
 export default function AdsPage() {
   const [prompt, setPrompt] = useState('Create a premium commercial advertisement for VektorFlow AI, an autonomous AI commerce operating system. Show a sleek futuristic command center with multiple AI agents working together across glowing digital dashboards, product analytics, marketing automation, and business operations. Cinematic professional advertising style, polished technology aesthetic, high-end SaaS campaign quality, clean composition, visually striking, realistic advertising artwork. No people, no clutter, no watermark.');
