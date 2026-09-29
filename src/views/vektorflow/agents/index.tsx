@@ -30,7 +30,7 @@ function AgentsPage() {
   const selected = agents.find((agent) => agent.name.toLowerCase() === selectedName);
 
   useEffect(() => {
-    fetch(`${API_BASE}/api/agents`)
+    vektorflowGet('/api/agents')
       .then(async (res) => {
         if (!res.ok) throw new Error(`Agents API returned ${res.status}`);
         return res.json();
@@ -63,11 +63,7 @@ function AgentsPage() {
     setInput('');
     try {
       const history = messages.map((item) => ({ role: item.role, content: item.text }));
-      const res = await fetch(`${API_BASE}/api/agents/${encodeURIComponent(selected.name)}/chat`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ message, conversation_history: history }),
-      });
+      const res = await vektorflowPost(`/api/agents/${encodeURIComponent(selected.name)}/chat`, { message, conversation_history: history });
       const data = await res.json();
       if (!res.ok) throw new Error(data.detail || `Agent returned ${res.status}`);
       const result = data.result || {};
