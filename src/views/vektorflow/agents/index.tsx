@@ -5,7 +5,7 @@ import { getContentNode } from 'src/content/vektorflow-content';
 
 const contentNode = getContentNode('vf-agents');
 const pageTitle = contentNode?.title ?? 'VektorFlow Agents';
-const API_BASE = import.meta.env.VITE_VEKTORFLOW_API_URL || 'https://vektorflow-15xr.onrender.com';
+const API_BASE = import.meta.env.VITE_VEKTORFLOW_API_URL || 'https://vektorflow-15xr-1.onrender.com';
 
 type Agent = { name: string; description: string; status?: string; tools?: string[] };
 type Message = { role: 'user' | 'agent'; text: string };
