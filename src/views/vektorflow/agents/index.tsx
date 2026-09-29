@@ -2,9 +2,6 @@ import { FormEvent, useEffect, useMemo, useState } from 'react';
 import { Link, useNavigate, useParams } from 'react-router';
 import BreadcrumbComp from 'src/layouts/full/shared/breadcrumb/BreadcrumbComp';
 import VektorFlowNav from 'src/views/vektorflow/VektorFlowNav';
-
-const contentNode = getContentNode('vf-agents');
-const pageTitle = contentNode?.title ?? 'VektorFlow Agents';
 import { vektorflowGet, vektorflowPost } from 'src/api/vektorflow';
 
 type Agent = { name: string; description: string; status?: string; tools?: string[] };
@@ -71,7 +68,7 @@ function AgentsPage() {
   return (
     <div className="flex flex-col gap-4">
       <VektorFlowNav />
-      <BreadcrumbComp title={pageTitle} />
+      <BreadcrumbComp title="VektorFlow Agents" />
       <div className="grid gap-4 lg:grid-cols-[300px_1fr]">
         <section className="rounded-xl border bg-card p-4">
           <div className="mb-4">
@@ -98,7 +95,6 @@ function AgentsPage() {
           </div>
           {error && <p className="mt-4 text-sm text-destructive">{error}</p>}
         </section>
-
         <section className="flex min-h-[650px] flex-col rounded-xl border bg-card">
           {selected ? (
             <>
@@ -116,7 +112,6 @@ function AgentsPage() {
                   <p className="mt-3 text-xs text-muted-foreground">Reasoning agent · connected to the VektorFlow LLM gateway</p>
                 )}
               </div>
-
               <div className="flex-1 space-y-3 overflow-y-auto p-5">
                 {messages.map((message, index) => (
                   <div key={index} className={`max-w-[85%] rounded-xl p-3 text-sm ${message.role === 'user' ? 'ml-auto bg-primary text-primary-foreground' : 'bg-muted'}`}>
@@ -125,7 +120,6 @@ function AgentsPage() {
                 ))}
                 {sending && <div className="rounded-xl bg-muted p-3 text-sm text-muted-foreground">Working…</div>}
               </div>
-
               <form onSubmit={sendMessage} className="border-t p-4">
                 <div className="flex gap-2">
                   <input
