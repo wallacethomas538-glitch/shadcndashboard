@@ -8,7 +8,7 @@ const API_BASE = VEKTORFLOW_API_BASE;
 export default function HermesPage() {
   const [health, setHealth] = useState<any>(null);
   const [loading, setLoading] = useState(true);
-  useEffect(() => { fetch(API_BASE + '/health').then(r => r.json()).then(setHealth).catch(() => setHealth({ status: 'unreachable' })).finally(() => setLoading(false)); }, []);
+  useEffect(() => { vektorflowGet('/health').then(setHealth).catch(() => setHealth({ status: 'unreachable' })).finally(() => setLoading(false)); }, []);
   return <div className="flex flex-col gap-5">
     <BreadcrumbComp title="Hermes" />
     <div className="rounded-2xl border bg-card p-6">
