@@ -44,7 +44,7 @@ function Workspace() {
   const load = async (endpoint: string, method: 'GET' | 'POST' = 'GET', body?: any) => {
     setState({ loading: true, error: '', data: null });
     try {
-      const res = await const data = method === 'POST' ? await vektorflowPost(endpoint, body ?? {}) : await vektorflowGet(endpoint);
+      const data = method === 'POST' ? await vektorflowPost(endpoint, body ?? {}) : await vektorflowGet(endpoint);
       setState({ loading: false, error: '', data });
       return data;
     } catch (e) {
@@ -58,8 +58,8 @@ function Workspace() {
         vektorflowGet('/health'),
         vektorflowGet('/api/info'),
         vektorflowGet('/api/agents'),
-        fetch(API_BASE + '/api/tasks').then(r => r.json()).catch(() => null),
-        fetch(API_BASE + '/api/inventory/alerts').then(r => r.json()).catch(() => null),
+        vektorflowGet('/api/tasks').catch(() => null),
+        vektorflowGet('/api/inventory/alerts').catch(() => null),
       ]).then(([health, info, agents, tasks, alerts]) => setState({ loading: false, error: '', data: { health, info, agents, tasks, alerts } }))
         .catch(e => setState({ loading: false, error: e instanceof Error ? e.message : String(e), data: null }));
     } else if (config.endpoint && config.method === 'GET') {
@@ -145,7 +145,11 @@ function Workspace() {
             <div className="rounded-xl border p-5">
               <h2 className="font-semibold">Execute {config.title.toLowerCase()} action</h2>
               <p className="mt-1 text-sm text-muted-foreground">This sends a real request to the VektorFlow backend. No fake result is generated in the dashboard.</p>
-              <button onClick={() => load(config.endpoint!, 'POST', { query: 'current product opportunities', goal: 'create a campaign', topic: 'organic ecommerce content' })} className="mt-4 rounded-lg bg-primary px-4 py-2 text-primary-foreground">Run backend action</button>
+              <button onClick={() => load(config.endpoint!, 'POST', {
+                ...(config.endpoint === '/api/products/search' ? { keyword: 'current product opportunities' } : {}),
+                ...(config.endpoint === '/api/campaign/generate' ? { product_type: 'ecommerce product', goal: 'create a campaign', target_audience: 'online shoppers', channels: ['social'], budget: 1000, timeline_days: 30 } : {}),
+                ...(config.endpoint === '/api/content/organic' ? { product_name: 'VektorFlow product', product_description: 'AI commerce operating system', platforms: ['instagram'], tone: 'professional', number_of_options: 3 } : {}),
+              })} className="mt-4 rounded-lg bg-primary px-4 py-2 text-primary-foreground">Run backend action</button>
             </div>
           )}
         </div>
