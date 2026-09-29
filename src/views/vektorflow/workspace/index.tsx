@@ -92,7 +92,7 @@ function Workspace() {
 
   const quickLinks = useMemo(() => [
     ['Products', '/vektorflow/products'], ['Inventory', '/vektorflow/inventory'], ['Sales', '/vektorflow/sales'],
-    ['Marketing', '/vektorflow/marketing'], ['Trends', '/vektorflow/trends'], ['Profit & Finance', '/vektorflow/finance'],
+    ['Marketing', '/vektorflow/marketing'], ['Trends', '/vektorflow/trends'], ['Profit & Finance', '/vektorflow/finance'], ['Ad Studio', '/vektorflow/ads'],
   ], []);
 
   return (
