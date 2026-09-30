@@ -1,9 +1,10 @@
 import { Link } from 'react-router';
+import type { ComponentType } from 'react';
 import { ArrowUpRight, Bot, BrainCircuit, Image, MessageSquare, Network, ShieldCheck, Sparkles, Activity, Boxes, Workflow } from 'lucide-react';
 
 const agents = ['Hawk','Smaug','Architect','DaVinci','Rook','Aegis','Arbiter','Sentinel','Echo','Cerebrum','ViralDet','Shadow','Bundler','Pivot','Oracle'];
 
-const surfaces = [
+const surfaces: Array<[string, string, string, ComponentType<{ className?: string }>]> = [
   ['Agents','Coordinate the 15-agent operating team.','/vektorflow/agents',Bot],
   ['LLM Studio','Talk directly with a selected model — separate from agents.','/vektorflow/llm',MessageSquare],
   ['Ad Studio','Create, review, and organize generated advertising creatives.','/vektorflow/ads',Image],
