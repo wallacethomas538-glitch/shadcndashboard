@@ -1,6 +1,6 @@
 import { uniqueId } from "lodash";
 import {
-Bot, Boxes, BrainCircuit, ChartNoAxesCombined, FlaskConical, Gauge,
+Bot, Boxes, BrainCircuit, ChartNoAxesCombined, FlaskConical, Gauge, MessageSquare, Image,
   GitBranch, KeyRound, LineChart, Package, PanelsTopLeft, Search, Settings,
   ShieldCheck, ShoppingCart, Store, TrendingUp, WalletCards, Workflow, Zap
 } from "lucide-react";
@@ -19,7 +19,7 @@ const item = (name: string, url: string, icon: any): ChildItem => ({ id: uniqueI
 const SidebarContent: MenuItem[] = [
   { heading: "VektorFlow", items: [
     item("Command Center", "/", Gauge), item("Agents", "/vektorflow/agents", Bot),
-    item("Hermes", "/vektorflow/hermes", Zap), item("Models", "/vektorflow/models", BrainCircuit), item("Ad Studio", "/vektorflow/ads", PanelsTopLeft),
+    item("Hermes", "/vektorflow/hermes", Zap), item("LLM Studio", "/vektorflow/llm", MessageSquare), item("Models", "/vektorflow/models", BrainCircuit), item("Ad Studio", "/vektorflow/ads", Image),
   ]},
   { heading: "Commerce", items: [
     item("Products", "/vektorflow/products", Package), item("Inventory", "/vektorflow/inventory", Boxes),
