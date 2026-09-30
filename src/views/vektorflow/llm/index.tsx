@@ -1,0 +1,19 @@
+import { useState } from 'react';
+import { BrainCircuit, Send, Settings2, Sparkles, User } from 'lucide-react';
+
+export default function LLMStudio() {
+  const [input,setInput]=useState('');
+  const [messages,setMessages]=useState<{role:string,text:string}[]>([]);
+  const send=()=>{if(!input.trim())return;setMessages([...messages,{role:'user',text:input.trim()}]);setInput('');};
+  return <div className="space-y-5">
+    <div className="rounded-2xl border bg-card p-6"><div className="flex flex-wrap items-center justify-between gap-4"><div><p className="text-xs font-semibold uppercase tracking-[0.18em] text-muted-foreground">Direct model interface</p><h1 className="mt-1 text-3xl font-bold">LLM Studio</h1><p className="mt-2 text-sm text-muted-foreground">Talk directly to an LLM. This surface is intentionally separate from VektorFlow agent execution.</p></div><span className="inline-flex items-center gap-2 rounded-full border px-3 py-1.5 text-xs font-medium"><Sparkles className="h-3.5 w-3.5"/> UI template · not wired</span></div></div>
+    <div className="grid gap-5 xl:grid-cols-[1fr_300px]">
+      <div className="flex min-h-[620px] flex-col rounded-2xl border bg-card">
+        <div className="flex items-center justify-between border-b p-4"><div className="flex items-center gap-3"><span className="rounded-xl bg-muted p-2"><BrainCircuit className="h-5 w-5"/></span><div><p className="font-semibold">Direct LLM Chat</p><p className="text-xs text-muted-foreground">No agent routing</p></div></div><button className="rounded-lg border p-2 hover:bg-muted"><Settings2 className="h-4 w-4"/></button></div>
+        <div className="flex-1 space-y-4 overflow-auto p-5">{messages.length===0?<div className="flex h-full min-h-[400px] flex-col items-center justify-center text-center"><BrainCircuit className="h-10 w-10 text-muted-foreground"/><h2 className="mt-4 text-lg font-semibold">Start a direct conversation</h2><p className="mt-1 max-w-md text-sm text-muted-foreground">Choose a model in the control panel and chat with it directly. Agent execution is not part of this interface.</p></div>:messages.map((m,i)=><div key={i} className={m.role==='user'?'ml-auto max-w-[80%] rounded-2xl bg-primary p-4 text-sm text-primary-foreground':'max-w-[80%] rounded-2xl border p-4 text-sm'}><div className="mb-1 flex items-center gap-2 text-xs opacity-70">{m.role==='user'?<User className="h-3.5 w-3.5"/>:<BrainCircuit className="h-3.5 w-3.5"/>}{m.role==='user'?'You':'LLM'}</div>{m.text}</div>)}</div>
+        <div className="border-t p-4"><div className="flex gap-2"><textarea value={input} onChange={e=>setInput(e.target.value)} onKeyDown={e=>{if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();send();}}} placeholder="Message the selected LLM…" className="min-h-12 flex-1 resize-none rounded-xl border bg-background p-3 text-sm outline-none"/><button onClick={send} className="self-end rounded-xl bg-primary p-3 text-primary-foreground"><Send className="h-4 w-4"/></button></div></div>
+      </div>
+      <aside className="space-y-4"><div className="rounded-2xl border bg-card p-5"><h2 className="font-semibold">Model</h2><div className="mt-3 rounded-xl border p-3"><p className="font-medium">Select model</p><p className="mt-1 text-xs text-muted-foreground">Provider and model routing will be wired later.</p></div></div><div className="rounded-2xl border bg-card p-5"><h2 className="font-semibold">Session</h2><div className="mt-3 space-y-3 text-sm"><div className="flex justify-between"><span className="text-muted-foreground">Context</span><span>Ready</span></div><div className="flex justify-between"><span className="text-muted-foreground">Agents</span><span>Excluded</span></div><div className="flex justify-between"><span className="text-muted-foreground">Tools</span><span>Not connected</span></div></div></div></aside>
+    </div>
+  </div>;
+}
