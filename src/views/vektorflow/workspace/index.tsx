@@ -1,5 +1,5 @@
 import { useLocation } from 'react-router';
-import { ArrowUpRight, Boxes, ChartNoAxesCombined, FlaskConical, GitBranch, KeyRound, LineChart, Package, Search, Settings, ShieldCheck, ShoppingCart, Store, TrendingUp, WalletCards, Workflow } from 'lucide-react';
+import { ArrowUpRight, Boxes, ChartNoAxesCombined, FlaskConical, GitBranch, LineChart, Package, Search, Settings, ShieldCheck, ShoppingCart, Store, TrendingUp, WalletCards, Workflow } from 'lucide-react';
 
 const pages: Record<string,{title:string;description:string;icon:any;group:string}> = {
  '/vektorflow/products':{title:'Products',description:'Catalog intelligence, product discovery, opportunities, and product operations.',icon:Package,group:'Commerce'},
