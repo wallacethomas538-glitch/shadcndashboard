@@ -8,6 +8,8 @@ const FullLayout = Loadable(lazy(() => import('../layouts/full/FullLayout')));
 const BlankLayout = Loadable(lazy(() => import('../layouts/blank/BlankLayout')));
 const ModernDashboard = Loadable(lazy(() => import('../views/dashboards/modern')));
 const Workspace = Loadable(lazy(() => import('../views/vektorflow/workspace')));
+const CommandCenter = Loadable(lazy(() => import('../views/vektorflow/command-center')));
+const LLMStudio = Loadable(lazy(() => import('../views/vektorflow/llm')));
 const AgentsPage = Loadable(lazy(() => import("../views/vektorflow/agents")));
 const ModelsPage = Loadable(lazy(() => import("../views/vektorflow/models")));
 const HermesPage = Loadable(lazy(() => import("../views/vektorflow/hermes")));
@@ -25,12 +27,13 @@ const auth = {
 
 const Router: import("react-router").RouteObject[] = [
   { path: '/', element: <FullLayout />, children: [
-    { path: '/', element: <ModernDashboard /> },
+    { path: '/', element: <CommandCenter /> },
     { path: '/dashboards/modern', element: <ModernDashboard /> },
     { path: '/vektorflow/agents', element: <AgentsPage /> },
     { path: '/vektorflow/agents/:agentName', element: <AgentsPage /> },
     { path: '/vektorflow/models', element: <ModelsPage /> },
     { path: '/vektorflow/hermes', element: <HermesPage /> },
+    { path: '/vektorflow/llm', element: <LLMStudio /> },
     { path: '/vektorflow/ads', element: <AdsPage /> },
     { path: '/vektorflow/products', element: <Workspace /> },
     { path: '/vektorflow/inventory', element: <Workspace /> },
