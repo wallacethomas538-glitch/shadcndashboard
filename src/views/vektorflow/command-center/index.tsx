@@ -1,4 +1,5 @@
 import { Link } from 'react-router';
+import { useEffect, useState } from 'react';
 import type { ComponentType } from 'react';
 import { ArrowUpRight, Bot, BrainCircuit, Image, MessageSquare, Network, ShieldCheck, Sparkles, Activity, Boxes, Workflow } from 'lucide-react';
 
