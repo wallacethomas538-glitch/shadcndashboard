@@ -23,7 +23,7 @@ export default function CommandCenter() {
         </div>
         <div className="mt-4 max-w-4xl">
           <h1 className="text-4xl font-bold tracking-tight md:text-5xl">Autonomous commerce, one control surface.</h1>
-          <p className="mt-4 max-w-2xl text-base leading-7 text-muted-foreground">A unified workspace for intelligence, agents, models, creative generation, workflows, and commerce operations. This UI is intentionally ready before live wiring.</p>
+          <p className="mt-4 max-w-2xl text-base leading-7 text-muted-foreground">Live Mission Control for agents, approvals, execution activity, and the VektorFlow gateway.</p>
         </div>
         <div className="mt-7 flex flex-wrap gap-3">
           <Link to="/vektorflow/llm" className="inline-flex items-center gap-2 rounded-xl bg-primary px-4 py-2.5 text-sm font-semibold text-primary-foreground"><MessageSquare className="h-4 w-4"/> Open LLM Studio</Link>
@@ -32,9 +32,7 @@ export default function CommandCenter() {
       </div>
     </section>
 
-    <section className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
-      {[['System','Ready for wiring','Architecture surface'],['Agents','15 defined','Agent roster'],['LLM','Standalone studio','Direct model chat'],['Creative','Ad generation','Creative workspace']].map(([a,b,c],i)=><div key={a} className="rounded-2xl border bg-card p-5"><div className="flex items-center justify-between"><span className="text-sm text-muted-foreground">{a}</span>{[Activity,Bot,BrainCircuit,Image][i] && <span className="rounded-lg bg-muted p-2"><span className="sr-only">{a}</span>{(() => {const I=[Activity,Bot,BrainCircuit,Image][i]; return <I className="h-4 w-4"/>})()}</span>}</div><div className="mt-3 text-2xl font-bold">{b}</div><div className="mt-1 text-xs text-muted-foreground">{c}</div></div>)}
-    </section>
+    <LiveControl />
 
     <section>
       <div className="mb-4 flex items-end justify-between"><div><p className="text-xs font-semibold uppercase tracking-[0.18em] text-muted-foreground">Control surfaces</p><h2 className="mt-1 text-2xl font-bold">Everything in one workspace</h2></div></div>
@@ -48,4 +46,18 @@ export default function CommandCenter() {
       <div className="rounded-2xl border bg-card p-5"><div className="flex items-center gap-2"><ShieldCheck className="h-5 w-5"/><h2 className="font-semibold">Control principle</h2></div><p className="mt-3 text-sm leading-6 text-muted-foreground">The dashboard separates direct LLM conversation from agent execution. Live integrations will be wired only after this interface is approved.</p></div>
     </section>
   </div>;
+}
+\n\nfunction LiveControl() {
+  const API=(import.meta.env.VITE_VEKTORFLOW_API_URL||'').replace(/\/$/,'');
+  const [gateway,setGateway]=useState<any>(null),[approvals,setApprovals]=useState<any[]>([]),[events,setEvents]=useState<any[]>([]),[live,setLive]=useState(false);
+  const refresh=async()=>{if(!API)return;try{const [g,a,e]=await Promise.all([fetch(API+'/api/v1/gateway/status').then(r=>r.json()),fetch(API+'/api/v1/mission-control/actions/pending').then(r=>r.json()),fetch(API+'/api/v1/gateway/events?limit=20').then(r=>r.json())]);setGateway(g);setApprovals(a.actions||[]);setEvents(e.events||[])}catch{}};
+  useEffect(()=>{refresh();const t=window.setInterval(refresh,5000);return()=>window.clearInterval(t)},[]);
+  useEffect(()=>{if(!API)return;const ws=new WebSocket(API.replace(/^http/,'ws')+'/api/v1/gateway/ws');ws.onopen=()=>setLive(true);ws.onclose=()=>setLive(false);ws.onmessage=m=>{try{const f=JSON.parse(m.data);if(f.type==='event'){setEvents(x=>[f.payload,...x].slice(0,20));refresh()}}catch{}};return()=>ws.close()},[]);
+  return <><section className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
+    {[['Gateway',gateway?.status||'offline','Execution boundary',Activity],['Live stream',live?'connected':'offline','WebSocket events',Activity],['Agents','15','Autonomous team',Bot],['Approvals',String(approvals.length),'Human review queue',ShieldCheck]].map(([a,b,c,I])=><div key={String(a)} className="rounded-2xl border bg-card p-5"><div className="flex justify-between text-sm text-muted-foreground"><span>{a}</span><I className="h-4 w-4"/></div><div className="mt-3 text-2xl font-bold">{b}</div><div className="text-xs text-muted-foreground">{c}</div></div>)}
+  </section>
+  <section className="grid gap-4 lg:grid-cols-2 mt-6">
+    <div className="rounded-2xl border bg-card p-5"><h2 className="font-semibold">Execution timeline</h2><div className="mt-3">{events.length?events.map((e:any,i:number)=><div key={e.event_id||i} className="border-b py-3 text-sm"><b>{e.type||'event'}</b><div className="text-xs text-muted-foreground">{e.source||'system'} · {e.timestamp||''}</div></div>):<p className="py-4 text-sm text-muted-foreground">No gateway events yet.</p>}</div></div>
+    <div className="rounded-2xl border bg-card p-5"><h2 className="font-semibold">Approval inbox</h2><div className="mt-3">{approvals.length?approvals.map((a:any)=><div key={a.id} className="border-b py-3 text-sm"><b>{a.action}</b><div className="text-xs text-muted-foreground">{a.agent} · {a.risk} · pending</div></div>):<p className="py-4 text-sm text-muted-foreground">No pending approvals.</p>}</div></div>
+  </section></>;
 }
