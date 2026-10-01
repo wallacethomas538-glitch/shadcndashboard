@@ -48,7 +48,9 @@ export default function CommandCenter() {
     </section>
   </div>;
 }
-\n\nfunction LiveControl() {
+
+
+function LiveControl() {
   const API=(import.meta.env.VITE_VEKTORFLOW_API_URL||'').replace(/\/$/,'');
   const [gateway,setGateway]=useState<any>(null),[approvals,setApprovals]=useState<any[]>([]),[events,setEvents]=useState<any[]>([]),[live,setLive]=useState(false);
   const refresh=async()=>{if(!API)return;try{const [g,a,e]=await Promise.all([fetch(API+'/api/v1/gateway/status').then(r=>r.json()),fetch(API+'/api/v1/mission-control/actions/pending').then(r=>r.json()),fetch(API+'/api/v1/gateway/events?limit=20').then(r=>r.json())]);setGateway(g);setApprovals(a.actions||[]);setEvents(e.events||[])}catch{}};
